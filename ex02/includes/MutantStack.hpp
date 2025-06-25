@@ -6,7 +6,7 @@
 /*   By: hfilipe- <hfilipe-@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/06/18 15:17:50 by hfilipe-          #+#    #+#             */
-/*   Updated: 2025/06/18 16:21:52 by hfilipe-         ###   ########.fr       */
+/*   Updated: 2025/06/25 21:52:39 by hfilipe-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,51 +14,40 @@
 # define MUTANTSTACK_HPP
 
 # include <iostream>
-# include <vector>
-# include <algorithm>
+# include <stack>
 
 template <typename T>
+class MutantStack : public std::stack<T> {
+	public:
+		MutantStack() {
+			std::cout << "Default constructor called" << std::endl;
+		}
 
-class MutantStack {
-    public:
-        MutantStack();
-        MutantStack(const MutantStack &other);
-        MutantStack& operator=(const MutantStack &other);
-        ~MutantStack();
+		MutantStack(const MutantStack& other) : std::stack<T>(other) {
+			std::cout << "Copy constructor called" << std::endl;
+		}
 
-        void    push(const &T value);
-        int     top();
-        void    pop();
-        void    emplace();
-        void    empty();
-        void    swap();
-        
+		MutantStack& operator=(const MutantStack& other) {
+			if (this != &other) {
+				std::stack<T>::operator=(other);
+			}
+			std::cout << "Assignment operator called" << std::endl;
+			return *this;
+		}
 
-		class ContainerIsFull : public std::exception
-		{
-			public:
-				virtual const char *what() const throw(){
-					return ("The container is full");
-				}
-		};
+		~MutantStack() {
+			std::cout << "Destructor called" << std::endl;
+		}
 
-		class ContainerIsEmpty : public std::exception
-		{
-			public:
-				virtual const char *what() const throw(){
-					return ("The container is empty");
-				}
-		};
+		typedef typename std::stack<T>::container_type::iterator iterator;
 
-		class ContainerHasOneELement : public std::exception
-		{
-			public:
-				virtual const char *what() const throw(){
-					return ("The container has only one element");
-				}
-		};
-    private:
-        std::vector<T> 	_container;
-        unsigned long       _size;
-}   ;
+		iterator begin() 
+		{ 
+			return (this->c.begin()); 
+		}
+		
+		iterator end() { 
+			return (this->c.end()); 
+		}
+};
 #endif
