@@ -6,13 +6,13 @@
 /*   By: hfilipe- <hfilipe-@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/06/18 14:07:03 by hfilipe-          #+#    #+#             */
-/*   Updated: 2025/06/18 15:06:53 by hfilipe-         ###   ########.fr       */
+/*   Updated: 2025/06/25 19:56:11 by hfilipe-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/Span.hpp"
 
-Span::Span(int N){
+Span::Span(unsigned int N){
     std::cout << "Parametrized constructor called" << std::endl;
     _container.reserve(N);
     _size = N;
@@ -24,7 +24,7 @@ Span::Span(const Span &other){
     _size = other._size;
 }
 
-Span & Span::operator=(const Span &other){
+Span& Span::operator=(const Span &other){
     std::cout << "Copy assignment constructor called" << std::endl;
     if (this != &other)
     {  

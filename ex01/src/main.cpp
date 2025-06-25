@@ -6,7 +6,7 @@
 /*   By: hfilipe- <hfilipe-@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/06/04 18:41:54 by hfilipe-          #+#    #+#             */
-/*   Updated: 2025/06/18 14:59:23 by hfilipe-         ###   ########.fr       */
+/*   Updated: 2025/06/25 19:52:28 by hfilipe-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,6 +30,7 @@ int main()
 			std::cout << e.what() << std::endl;
 		}
 	}
+	std::cout << std::endl;
 	{
 		Span sp = Span(15000);
 		for (size_t i = 0; i < 15000; i++)
@@ -37,6 +38,7 @@ int main()
 		std::cout << sp.shortestSpan() << std::endl;
 		std::cout << sp.longestSpan() << std::endl;
 	}
+	std::cout << std::endl;
 	{
 		Span sp = Span(20000);
 		std::vector<int> numbers;

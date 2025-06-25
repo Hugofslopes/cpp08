@@ -6,7 +6,7 @@
 /*   By: hfilipe- <hfilipe-@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/06/04 18:42:37 by hfilipe-          #+#    #+#             */
-/*   Updated: 2025/06/18 15:34:44 by hfilipe-         ###   ########.fr       */
+/*   Updated: 2025/06/25 19:55:58 by hfilipe-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,9 +19,9 @@
 
 class Span {
 	public:
-		Span(int N);
+		Span(unsigned int N);
 		Span(const Span &other);
-		Span & operator=(const Span &other);
+		Span& operator=(const Span &other);
 		~Span();
 
 		void addNumber(int Number);
@@ -29,11 +29,10 @@ class Span {
 		int longestSpan();
 		template <typename InputIterator>
 		void addRange(InputIterator begin, InputIterator end) {
-			while (begin != end) {
+			for(; begin != end; begin++) {
 				if (_container.size() >= _size)
 					throw ContainerIsFull();
 				_container.push_back(*begin);
-				++begin;
 			}
 		}
 
@@ -63,6 +62,6 @@ class Span {
 		
 	private:
 		std::vector<int>	_container;
-		unsigned long		_size;
+		unsigned int		_size;
 } ;
 #endif
